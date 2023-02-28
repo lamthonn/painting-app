@@ -1,0 +1,57 @@
+<!-- ràng buộc class vào html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <h1 >first name = {{ firstName }}</h1>
+        <h1>about: {{ about }}</h1>
+       <input v-model="firstName" type="text" placeholder="nhap text">
+       <br>
+       <textarea v-model="about" cols="30" rows="10"></textarea> <br>
+       <div class="demo" v-bind:class='objClass'></div>
+       <button v-on:click="changeActive">change Active</button>
+       <button v-on:click="changeErrol">change Errol</button>
+    </div>
+</body>
+<script>
+    
+    let app = new Vue({
+    el: '#app',
+    data: {
+        firstName:"",
+        about: "",
+        textClass:"arrive",
+        isActive: true,
+        isErrol: false,
+    },
+
+    methods:{
+        changeActive(){
+            this.isActive = !this.isActive;
+        },
+        changeErrol(){
+            this.isErrol = !this.isErrol;
+        }
+    },
+
+    computed:{
+        objClass: function(){
+            return { 
+                active: this.isActive, 
+                errol: this.isErrol,
+            }
+        }
+    },
+});
+
+</script>
+</html>
